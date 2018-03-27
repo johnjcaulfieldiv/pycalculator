@@ -1,8 +1,10 @@
-# basic calculator program to learn tkinter
-# 
-# John Caulfield
-#
-# 3/24/18
+""" 
+basic calculator program to learn tkinter
+ 
+John Caulfield
+
+3/24/18
+"""
 
 import tkinter as tk
 from tkinter import Grid
