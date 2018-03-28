@@ -41,28 +41,11 @@ def cmd_operator(op):
 def cmdclear():
 	solntext.set("")
 
-def is_valid_equation(equationstr):
-	eqlist = equationstr.split(" ")
-	for i in range(len(eqlist)):
-		if eqlist[i].count(".") > 1:
-			return False
-		if i % 2 == 0:
-			if eqlist[i] in ("+-*/") or eqlist[i][0] in ("+-*/"):
-				return False
-		else: # i % 2 == 1
-			if eqlist[i] not in ("+-*/"):
-				return False
-			else:				
-				if eqlist[i] == "/" and eqlist[i+1] not in ("+-*/"): # check for div by zero error
-					if eqlist[i+1].count(".") > 1 or float(eqlist[i+1]) == 0:
-						return False
-	return True	
-
 def cmdequals():
 	equationstr = solntext.get()
-	if is_valid_equation(equationstr):
-		solntext.set(solntext.get() + " = " + str(eval(equationstr)))
-	else:
+	try:
+		solntext.set(equationstr + " = " + str(eval(equationstr)))
+	except:
 		solntext.set(errStr)
 
 # buttons
