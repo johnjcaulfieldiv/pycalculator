@@ -21,7 +21,6 @@ soln = tk.Label(master, textvariable=solntext).grid(column=0, row=0, columnspan=
 # string to display if improper equation is executed
 errStr = "error: invalid equation"
 
-
 # Functions
 def cmd_numeric(n):
 	eqlist = solntext.get().split(" ")
@@ -48,7 +47,7 @@ def is_valid_equation(equationstr):
 		if eqlist[i].count(".") > 1:
 			return False
 		if i % 2 == 0:
-			if eqlist[i] in ("+-*/"):
+			if eqlist[i] in ("+-*/") or eqlist[i][0] in ("+-*/"):
 				return False
 		else: # i % 2 == 1
 			if eqlist[i] not in ("+-*/"):
@@ -58,7 +57,7 @@ def is_valid_equation(equationstr):
 					if eqlist[i+1].count(".") > 1 or float(eqlist[i+1]) == 0:
 						return False
 	return True	
-	
+
 def cmdequals():
 	equationstr = solntext.get()
 	if is_valid_equation(equationstr):
